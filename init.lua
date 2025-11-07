@@ -29,6 +29,17 @@ require('lazy').setup({
     end
 },
 {
+  "lervag/vimtex",
+  lazy = false,     -- we don't want to lazy load VimTeX
+  -- tag = "v2.15", -- uncomment to pin to a specific release
+  init = function()
+    -- VimTeX configuration goes here, e.g.
+    vim.g.vimtex_view_method = "zathura"
+    vim.g.vimtex_compiler_method = "latexmk"
+    vim.g.vimtex_compiler_start_on_load = 1
+  end
+},
+{
   "nvim-neo-tree/neo-tree.nvim",
 dependencies = {
     "nvim-lua/plenary.nvim",
@@ -121,7 +132,7 @@ keys = {
     },
     default_component_configs = {
       indent = {
-        with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+        with_expanders = true,
         expander_collapsed = "",
         expander_expanded = "",
         expander_highlight = "NeoTreeExpander",
