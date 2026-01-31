@@ -1,6 +1,10 @@
 vim.opt.number = true
 vim.g.mapleader = " " 
 -- lazy vim is a package manager
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -106,6 +110,10 @@ keys = {
     filesystem = {
       bind_to_cwd = false,
       follow_current_file = { enabled = true },
+       filtered_items = {
+      hide_dotfiles = false, -- show .env
+      hide_gitignored = false,
+    },
       use_libuv_file_watcher = true,
     },
     window = {
@@ -128,6 +136,7 @@ keys = {
           desc = "Open with System Application",
         },
         ["P"] = { "toggle_preview", config = { use_float = false } },
+	["v"] = "open_vsplit",
       },
     },
     default_component_configs = {
